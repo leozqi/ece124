@@ -1,0 +1,16 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity compx1 is port(
+	input_a, input_b : in std_logic;
+	input_a_gb, input_a_eq, input_a_sb : out std_logic
+);
+end compx1;
+
+architecture compx1_logic of compx1 is
+
+begin
+	input_a_gb <= input_a AND (NOT input_b);
+	input_a_eq <= input_a XNOR input_b;
+	input_a_sb <= (NOT input_a) AND input_b;
+end;
