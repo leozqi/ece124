@@ -7,11 +7,11 @@ entity HVAC is
 
 	port
 	(
-		HVAC_SIM					: in boolean;
-		clk						: in std_logic; 
+		HVAC_SIM			: in boolean;
+		clk					: in std_logic; 
 		run		   			: in std_logic;
 		increase, decrease	: in std_logic;
-		temp						: out std_logic_vector (3 downto 0)
+		temp				: out std_logic_vector (3 downto 0)
 	);
 
 end entity;
@@ -19,7 +19,7 @@ end entity;
 architecture rtl of HVAC is
 
 signal clk_2hz 			: std_logic;
-signal HVAC_clock			: std_logic;
+signal HVAC_clock		: std_logic;
 signal digital_counter 	: std_logic_vector(23 downto 0);
 
 
@@ -59,6 +59,17 @@ counter:	process (HVAC_clock)
 	-- Synchronously update counter
 	-- (ADD YOUR HVAC COUNTER FOR TEMPERATURE IF STATEMENTS HERE)
 
+		if ((rising_edge(HVAC_clock)) and (run ='1')) then
+
+			if ((increase = '1') and not (temp = "1111")) then
+				cnt := cnt + 1;
+				
+			elsif ((decrease = '1') and not (temp = "0000")) then
+				cnt := cnt - 1;
+
+			end if;
+			
+		end if;
 
 
 	-- Output the current count	
