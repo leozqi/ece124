@@ -22,17 +22,17 @@ PROCESS (MC_TESTMODE, input1, input2, I1EQI2, I1GTI2, I1LTI2) is
  
 begin
 		
-		IF ((input1  input2) AND (I1EQI2 = '1')) THEN 
+		IF ((input1 = input2) AND (I1EQI2 = '1')) THEN 
 		EQ_PASS <= '1';
 		GT_PASS <= '0'; 
 		LT_PASS <= '0';
 		
-		ELSIF ((input1  input2) AND (I1GTI2 = '1')) THEN  
+		ELSIF ((input1 > input2) AND (I1GTI2 = '1')) THEN  
 		GT_PASS <= '1';
 		EQ_PASS <= '0'; 
 		LT_PASS <= '0';
 		
-		ELSIF ((input1  input2) AND (I1LTI2 = '1')) THEN  
+		ELSIF ((input1 < input2) AND (I1LTI2 = '1')) THEN  
 		LT_PASS <= '1';
 		EQ_PASS <= '0'; 
 		GT_PASS <= '0'; 

@@ -1,7 +1,7 @@
 library ieee;
   use ieee.std_logic_1164.all;
 
-entity compx4 is
+entity compx_4bit is
   port (
     a    : in    std_logic_vector(3 downto 0);
     b    : in    std_logic_vector(3 downto 0);
@@ -9,9 +9,9 @@ entity compx4 is
     aeqb : out   std_logic;
     altb : out   std_logic
   );
-end entity compx4;
+end entity compx_4bit;
 
-architecture behaviour of compx4 is
+architecture design of compx_4bit is
 
   component compx1 is port (
       a    : in    std_logic;
@@ -54,4 +54,4 @@ begin
     or ((not a3gtb3) and (not a2gtb2) and a1ltb1)
     or ((not a3gtb3) and (not a2gtb2) and (not a1gtb1) and a0ltb0);
 
-end architecture behaviour;
+end architecture design;

@@ -7,7 +7,7 @@ entity pb_inverter is
 		pb_n : in  std_logic_vector(3 downto 0);
 		pb   : out std_logic_vector(3 downto 0)
 	);
-end entity pb_inverter;
+end pb_inverter;
 
 
 architecture gates of pb_inverter is
@@ -15,4 +15,4 @@ architecture gates of pb_inverter is
 begin
 	pb <= not(pb_n);
 
-end architecture gates;
+end gates;

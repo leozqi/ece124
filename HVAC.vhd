@@ -61,10 +61,10 @@ counter:	process (HVAC_clock)
 
 		if ((rising_edge(HVAC_clock)) and (run ='1')) then
 
-			if ((increase = '1') and not (temp = "1111")) then
+			if ((increase = '1') and (cnt < "1111")) then
 				cnt := cnt + 1;
 				
-			elsif ((decrease = '1') and not (temp = "0000")) then
+			elsif ((decrease = '1') and (cnt > "0000")) then
 				cnt := cnt - 1;
 
 			end if;

@@ -25,20 +25,15 @@ end entity energy_monitor;
 
 architecture design of energy_monitor is
 
-  signal run_sig : std_logic;
-
 begin
-  furnace <= agtb;  -- mux_temp > curr_temp
+  furnace <= agtb  -- mux_temp > curr_temp
   at_temp <= aeqb; -- mux_temp = curr_temp
   ac <= altb;      -- mux_temp < curr_temp
-  blower <= (not aeqb) and (not (MC_test_mode or window_open or door_open));
+  blower <= (not aeqb) and ((not MC_test_mode) or window_open or door_open);
   window <= window_open;
   door <= door_open;
   vacation <= vacation_mode;
-  
- 
-  run_sig <= (not (window_open or door_open or MC_test_mode));
-  increase <= agtb;
-  decrease <= altb;
-  run <= run_sig;
+  run <= (not aeqb) and (not (window_open or door_open or MC_test_mode));
+  increase <= run and agtb;
+  decrease <= run and altb;
 end architecture design;
